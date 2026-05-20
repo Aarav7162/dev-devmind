@@ -4,41 +4,20 @@ import { Link } from "@tanstack/react-router";
 export const SUPPORT_EMAIL = "dev.devmind@gmail.com";
 
 export function Logo({ size = 26, downloadable = false }: { size?: number; downloadable?: boolean }) {
-  // Rounded liquid-glass orb housing the real DevMind mark (logo.png)
   const inner = (
-    <span
-      aria-label="DevMind"
-      className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[8px] sheen sheen-slow"
+    <img
+      src="/logo.png"
+      alt="DevMind logo"
+      width={size}
+      height={size}
+      draggable
+      className="inline-block shrink-0 select-none rounded-full object-cover"
       style={{
         width: size,
         height: size,
-        background:
-          "radial-gradient(130% 130% at 28% 18%, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.10) 24%, rgba(18,18,20,0.96) 58%, #000 100%)",
-        border: "1px solid rgba(255,255,255,0.14)",
-        boxShadow:
-          "inset 0 1px 0 rgba(255,255,255,0.40), inset 0 -6px 12px rgba(0,0,0,0.55), 0 6px 18px -8px rgba(255,255,255,0.22), 0 0 0 0.5px rgba(0,0,0,0.6)",
+        boxShadow: "0 6px 18px -8px rgba(255,255,255,0.18)",
       }}
-    >
-      <img
-        src="/logo.png"
-        alt="DevMind logo"
-        width={size}
-        height={size}
-        draggable
-        className="relative z-[1] h-full w-full select-none object-cover"
-        style={{ borderRadius: 8 }}
-      />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute left-[10%] top-[6%] h-[55%] w-[55%] rounded-full opacity-60 blur-[3px]"
-        style={{ background: "radial-gradient(closest-side, rgba(255,255,255,0.75), transparent 70%)" }}
-      />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-[12%] bottom-[6%] h-[2px] rounded-full opacity-50"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)" }}
-      />
-    </span>
+    />
   );
 
   if (downloadable) {
@@ -48,7 +27,7 @@ export function Logo({ size = 26, downloadable = false }: { size?: number; downl
         download="devmind-logo.png"
         aria-label="Download DevMind logo"
         title="Download DevMind logo"
-        className="focus-ring rounded-[8px]"
+        className="focus-ring inline-block rounded-full"
         onClick={(e) => e.stopPropagation()}
       >
         {inner}
