@@ -186,8 +186,8 @@ const commands: Page[] = [
       <CommandPage
         name="start"
         desc="Launch the background watcher daemon silently. No console window remains on screen — the scanning loop runs with 0% measurable CPU."
-        usage=".\\release\\devmind.exe start"
-        examples={[".\\release\\devmind.exe start\n# [daemon] focus watcher armed (pid 26404)"]}
+        usage=".\\devmind.exe start"
+        examples={[".\\devmind.exe start\n# [daemon] focus watcher armed (pid 26404)"]}
         notes="Once installed, the daemon also auto-starts on boot. Use this command if you stopped it manually."
       />
     ),
@@ -199,9 +199,9 @@ const commands: Page[] = [
       <CommandPage
         name="status"
         desc="Print live telemetry — daemon PID, today's interception count, and your license tier."
-        usage=".\\release\\devmind.exe status"
+        usage=".\\devmind.exe status"
         examples={[
-          ".\\release\\devmind.exe status\n" +
+          ".\\devmind.exe status\n" +
             "daemon          : running    (pid 26404)\n" +
             "interceptions   : 1 / unlimited (today | pro)\n" +
             "license         : pro",
@@ -216,7 +216,7 @@ const commands: Page[] = [
       <CommandPage
         name="stop"
         desc="Disarm the background watcher. Distractions will not be intercepted until you start it again."
-        usage=".\\release\\devmind.exe stop"
+        usage=".\\devmind.exe stop"
         notes={<>Pro tip: just don't.</>}
       />
     ),
@@ -265,11 +265,11 @@ const groups: Group[] = [
             <Code lang="powershell">{`iwr -useb https://dev-devmind.netlify.app/install.ps1 | iex`}</Code>
             <P>
               The installer drops <Mono>devmind.exe</Mono> into{" "}
-              <Mono>~/.devmind/release/</Mono>, adds it to your PATH, and registers
+              <Mono>~/.devmind/bin/</Mono>, adds it to your PATH, and registers
               the background watcher to auto-start on boot.
             </P>
             <H2>Verify</H2>
-            <Code lang="powershell">{`.\\release\\devmind.exe status
+            <Code lang="powershell">{`.\\devmind.exe status
 # daemon : running`}</Code>
             <Callout variant="warn">
               macOS and Linux support is in progress. Today, DevMind is Windows-only —
@@ -287,8 +287,8 @@ const groups: Group[] = [
             <P>Less than 30 seconds to your first interception.</P>
             <H2>1. Launch the Dashboard</H2>
             <P>
-              Double-click <Mono>release/devmind.exe</Mono>. The matte-black desktop
-              control dashboard launches immediately.
+              Just double-click <Mono>devmind.exe</Mono>. The matte-black desktop
+              control dashboard launches immediately — no terminal, no setup.
             </P>
             <H2>2. Start the Watcher Daemon</H2>
             <P>

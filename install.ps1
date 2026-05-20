@@ -24,9 +24,7 @@ Write-Host "  [1/3] Getting devmind.exe..." -NoNewline
 $LOCAL_BIN = ""
 $POSSIBLE_PATHS = @(
     (Join-Path $PSScriptRoot "devmind.exe"),
-    (Join-Path $PSScriptRoot "release\devmind.exe"),
-    (Join-Path $PSScriptRoot "..\release\devmind.exe"),
-    (Join-Path (Get-Location) "release\devmind.exe"),
+    (Join-Path $PSScriptRoot "..\devmind.exe"),
     (Join-Path (Get-Location) "devmind.exe")
 )
 
@@ -56,7 +54,7 @@ if ($LOCAL_BIN -ne "") {
         Write-Host ""
         Write-Host "To install your local build:" -ForegroundColor White
         Write-Host "  1. Open PowerShell inside the FocusFlow project directory." -ForegroundColor DarkGray
-        Write-Host "  2. Run: .\release\install.ps1" -ForegroundColor Cyan
+        Write-Host "  2. Run: .\install.ps1" -ForegroundColor Cyan
         Write-Host ""
         exit 1
     }

@@ -28,7 +28,7 @@ const heroFrames = [
 └─────────────────────────────────────────┘`,
   `$ devmind status
 daemon         : running   (pid 8421)
-interceptions  : 1 / 1   (today · free)
+interceptions  : 2 / 2   (today · free)
 license        : free`,
 ];
 
@@ -290,7 +290,7 @@ function Pricing() {
             <div className="mt-6 flex items-baseline gap-1.5">
               <span className="text-5xl font-semibold tracking-[-0.03em]">₹0</span>
             </div>
-            <p className="mt-4 text-[14px] text-[#a1a1a1]">1 interception per day. After that, you're on your own.</p>
+            <p className="mt-4 text-[14px] text-[#a1a1a1]">2 interceptions per day. After that, you're on your own.</p>
             <ul className="mt-8 space-y-2.5 text-[13.5px] text-[#a1a1a1]">
               <li className="flex gap-2"><span className="text-[#444]">—</span> All CLI commands</li>
               <li className="flex gap-2"><span className="text-[#444]">—</span> System-level daemon</li>
