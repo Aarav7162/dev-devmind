@@ -1,5 +1,5 @@
 # DevMind Web Installer (Windows)
-# Run: iwr -useb https://aarav7162.github.io/dev-devmind/install.ps1 | iex
+# Run: (iwr -useb https://aarav7162.github.io/dev-devmind/install.ps1).Content | iex
 
 $ErrorActionPreference = "Stop"
 
@@ -20,15 +20,19 @@ if (-not (Test-Path $INSTALL_DIR)) {
 # 2. Get the binary (with local/offline testing fallback)
 Write-Host "  [1/3] Getting devmind.exe..." -NoNewline
 
-# Determine if we have a local build available (for developer/offline installation)
 $LOCAL_BIN = ""
-$POSSIBLE_PATHS = @(
-    (Join-Path $PSScriptRoot "devmind.exe"),
-    (Join-Path $PSScriptRoot "release\devmind.exe"),
-    (Join-Path $PSScriptRoot "..\release\devmind.exe"),
-    (Join-Path (Get-Location) "release\devmind.exe"),
-    (Join-Path (Get-Location) "devmind.exe")
-)
+$POSSIBLE_PATHS = @()
+
+# Safely check PSScriptRoot only if it is populated (prevents iex empty path crash)
+if (![string]::IsNullOrWhiteSpace($PSScriptRoot)) {
+    $POSSIBLE_PATHS += (Join-Path $PSScriptRoot "devmind.exe")
+    $POSSIBLE_PATHS += (Join-Path $PSScriptRoot "release\devmind.exe")
+    $POSSIBLE_PATHS += (Join-Path $PSScriptRoot "..\release\devmind.exe")
+}
+
+# Fallbacks for current working directory execution
+$POSSIBLE_PATHS += (Join-Path (Get-Location) "devmind.exe")
+$POSSIBLE_PATHS += (Join-Path (Get-Location) "release\devmind.exe")
 
 foreach ($path in $POSSIBLE_PATHS) {
     if (Test-Path $path) {
@@ -61,8 +65,8 @@ if (![string]::IsNullOrWhiteSpace($LOCAL_BIN)) {
         Write-Host "  Offline Fallback Failed: No local 'devmind.exe' was found in the current directory." -ForegroundColor Yellow
         Write-Host ""
         Write-Host "To install your local build:" -ForegroundColor White
-        Write-Host "  1. Open PowerShell inside the FocusFlow project directory." -ForegroundColor DarkGray
-        Write-Host "  2. Run: .\release\install.ps1" -ForegroundColor Cyan
+        Write-Host "  1. Open PowerShell inside the project directory." -ForegroundColor DarkGray
+        Write-Host "  2. Run: .\install.ps1" -ForegroundColor Cyan
         Write-Host ""
         exit 1
     }
