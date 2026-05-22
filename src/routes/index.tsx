@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { DevMindPage } from "@/components/DevMindPage";
 
+const meta = document.createElement('meta');
+meta.name = "google-site-verification";
+meta.content = "UhkPsA0sbfOFsR3FmRhpSdPFdjlSDz6fnLPKcBYqY-w";
+document.getElementsByTagName('head')[0].appendChild(meta);
+
 export const Route = createFileRoute("/")({
   component: DevMindPage,
   head: () => ({
