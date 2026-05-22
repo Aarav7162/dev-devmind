@@ -17,6 +17,11 @@ export const Route = createFileRoute("/")({
         content:
           "Local daemon that intercepts distractions, locks your screen, and guilts you back to your code with full project context.",
       },
+      // 👇 Added your Google Search Console verification safely here
+      {
+        name: "google-site-verification",
+        content: "UhkPsA0sbfOFsR3FmRhpSdPFdjlSDz6fnLPKcBYqY-w",
+      },
     ],
   }),
 });
